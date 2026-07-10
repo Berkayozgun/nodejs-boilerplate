@@ -5,10 +5,7 @@ const errorHandler = async (err, req, res, next) => {
   let error = { ...err };
   error.message = err.message;
 
-  // Log to console for dev
-  if (process.env.NODE_ENV !== 'production') {
-    console.error(err);
-  }
+
 
   // Mongoose Bad ObjectId
   if (err.name === 'CastError') {

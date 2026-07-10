@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { logger, errorLogger } = require('../utils/logger');
+const { errorLogger } = require('../utils/logger');
 const jwt = require('jsonwebtoken');
 
 /**

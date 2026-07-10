@@ -1,59 +1,46 @@
-# 🛡️ Production-Ready Node.js Boilerplate
+# 🛡️ Enterprise Node.js & Express Boilerplate
 
-A robust, security-first Node.js/Express starter kit designed for enterprise-level applications. Implements **Layered Architecture** and industry best practices out of the box.
+![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-4.x-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Security](https://img.shields.io/badge/Security-Helmet%20%7C%20XSS%20%7C%20Rate%20Limit-red?style=for-the-badge)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
-![Node.js](https://img.shields.io/badge/Node.js-18-green) ![Express](https://img.shields.io/badge/Express-4.x-grey) ![Security](https://img.shields.io/badge/Security-Hardened-red) ![License](https://img.shields.io/badge/License-MIT-blue)
+A robust, security-first Node.js and Express backend starter kit designed for enterprise-level applications. This boilerplate implements strict Layered Architecture principles, comprehensive security measures, and a fully automated CI/CD pipeline out of the box.
 
----
+## 🏗️ Architecture & Core Features
 
-### 🚀 Features & Best Practices
+* **Layered Architecture:** Clear separation of concerns utilizing Controllers, Services, Models, and Middlewares.
+* **Advanced Security:** Pre-configured with `Helmet` (HTTP header security), `XSS-Clean` (cross-site scripting protection), `HPP` (HTTP parameter pollution prevention), and `express-rate-limit`.
+* **Authentication & Authorization:** Secure JWT (JSON Web Token) implementation with role-based access control and `bcrypt` password hashing.
+* **Database Integration:** Scalable MongoDB modeling using `Mongoose` ORM.
+* **Continuous Integration:** Automated testing and build verification via GitHub Actions on every push and pull request.
+* **Error Handling:** Global error handling middleware ensuring consistent API responses and clean console outputs.
 
-#### 🔒 Advanced Security
-- **Helmet:** Sets secure HTTP headers to protect against well-known web vulnerabilities.
-- **Rate Limiting:** IP-based request throttling to prevent Brute-Force and DDoS attacks.
-- **NoSQL Injection Protection:** Sanitizes user inputs using `express-mongo-sanitize`.
-- **XSS Clean:** Prevents Cross-Site Scripting attacks by sanitizing request data.
-- **HPP:** Protects against HTTP Parameter Pollution attacks.
+## 🚀 Quick Start
 
-#### 🏗 Layered Architecture
-Strict separation of concerns for maintainability and scalability:
-- `src/controllers` -> Business Logic
-- `src/models` -> Data Layer (Mongoose Schemas)
-- `src/routes` -> Endpoint Definitions
-- `src/middlewares` -> Interceptors (Auth, Error Handling)
-- `src/utils` -> Helper functions (Logger, API Features)
+### 1. Clone & Install
+```bash
+git clone https://github.com/Berkayozgun/nodejs-boilerplate.git
+cd nodejs-boilerplate
+npm install
+```
 
-#### 📝 Logging & Error Handling
-- **Centralized Error Handler:** Catches operational errors (Validation, Duplication, CastError) and sends standardized JSON responses.
-- **Winston Logger:** Multi-transport logging system writing to `application.log` (general info) and `error.log` (critical issues).
+### 2. Environment Setup
+Rename the provided environment template and configure your local/production values.
+```bash
+cp .env.example .env
+```
 
-#### 📚 API Documentation
-- Integrated **Swagger UI** (`/api-docs`) auto-generated from JSDoc comments, making frontend integration seamless.
+### 3. Run the Application
+For local development with hot-reloading:
+```bash
+npm run dev
+```
+For production environments:
+```bash
+npm start
+```
 
----
-
-### 📦 Quick Start
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/Berkayozgun/nodejs-boilerplate.git](https://github.com/Berkayozgun/nodejs-boilerplate.git)
-   cd nodejs-boilerplate
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment:** Rename `.env.example` to `.env` and update your MongoDB URI.
-
-4. **Run the application:**
-   ```bash
-   # Development mode
-   npm run dev
-
-   # Production mode
-   npm start
-   ```
-
-5. **Explore API:** Visit `http://localhost:5000/api-docs` to see the endpoints.
+## 🧪 CI/CD Pipeline
+This repository uses **GitHub Actions** for Continuous Integration. Every commit to the `main` branch automatically triggers the Node.js CI workflow to verify dependency installation and validate the build process, ensuring zero downtime and deployment safety.

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const logger = require('../utils/logger');
+const { errorLogger } = require('../utils/logger');
 
 // Protect routes
 exports.protect = async (req, res, next) => {
@@ -13,10 +13,7 @@ exports.protect = async (req, res, next) => {
     // Set token from Bearer token in header
     token = req.headers.authorization.split(' ')[1];
   }
-  // Set token from cookie
-  // else if (req.cookies.token) {
-  //   token = req.cookies.token;
-  // }
+
 
   // Make sure token exists
   if (!token) {
@@ -33,7 +30,7 @@ exports.protect = async (req, res, next) => {
 
     next();
   } catch (err) {
-    logger.error(err);
+    errorLogger.error(err.message, { stack: err.stack });
     const error = new Error('Not authorized to access this route');
     error.statusCode = 401;
     return next(error);
